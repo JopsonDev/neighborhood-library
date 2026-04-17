@@ -43,9 +43,12 @@ public class Main {
             switch (input) {
                 case 1 -> {
                     availableList();
-                    checkout(scanner);
+                    checkOutNow(scanner);
                 }
-                case 2 -> checkOutList();
+                case 2 -> {
+                    checkOutList();
+                    checkInNow(scanner);
+                }
                 case 3 -> isDone = true;
                 default -> System.out.println("Invalid Input");
             }
@@ -73,13 +76,13 @@ public class Main {
             }
         }
     }
-    public static void checkout(Scanner scanner){
+    public static void checkOutNow(Scanner scanner){
         System.out.print("check out book? C to continue: X to exit to menu: ");
         String checkingOut = scanner.nextLine();
         if (checkingOut.equalsIgnoreCase("c")) {
             System.out.print("Name: ");
             String name = scanner.nextLine();
-            System.out.println("Book ID: ");
+            System.out.print("Book ID: ");
             int bookChecked = scanner.nextInt();
 
             boolean found = false;
@@ -95,5 +98,27 @@ public class Main {
             }
 
             }
+    }
+    public static void checkInNow(Scanner scanner) {
+        System.out.println("Want to check in a book? C to continue: X exit to menu");
+        String checkIn = scanner.nextLine();
+        if (checkIn.equalsIgnoreCase("c")) {
+            System.out.print("Book ID: ");
+            int bookCheckedIn = scanner.nextInt();
+
+            boolean found = false;
+
+            for (int i = 0; numBooks > i; i++) {
+                if (books[i].getId() == bookCheckedIn) {
+                    books[i].checkIn();
+                    found = true;
+                    System.out.println("Thank You!");
+                }
+            }
+            if(!found){
+                System.out.println("No Matching ID's");
+            }
+
+        };
     }
 }
