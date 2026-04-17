@@ -1,6 +1,7 @@
 package com.pluarlsight;
 
 import java.util.Scanner;
+//need to make sure checked out books dont show on avaiable
 
 public class Main {
     private static Book[] books = new Book[100];
