@@ -73,46 +73,55 @@ public class Main {
         String checkingOut = scanner.nextLine();
 
         if (checkingOut.equalsIgnoreCase("c")) {
-            System.out.print("Please enter Name: ");
-            String name = scanner.nextLine();
-            System.out.print("Please enter Book ID: ");
-            int bookChecked = scanner.nextInt();
-
-            boolean found = false;
-
-            for (int i = 0; numBooks > i; i++) {
-                if (books[i].getId() == bookChecked) {
-                    books[i].checkOut(name);
-                    found = true;
-                }
-            }
-            if(!found){
-                System.out.println("No Matching ID's");
-            }
-
+            String name = name(scanner);
+            int idNumber = idNumber(scanner);
+            bookOut(idNumber,name);
         }
     }
     public static void checkInNow(Scanner scanner) {
-        System.out.println("Want to check in a book? C to continue: X exit to menu");
+        System.out.print("Want to check in a book? C to continue: X exit to menu: ");
         String checkIn = scanner.nextLine();
 
         if (checkIn.equalsIgnoreCase("c")) {
-            System.out.print("Book ID: ");
-            int bookCheckedIn = scanner.nextInt();
-
-            boolean found = false;
-
-            for (int i = 0; numBooks > i; i++) {
-                if (books[i].getId() == bookCheckedIn) {
-                    books[i].checkIn();
-                    found = true;
-                    System.out.println("Thank You!");
-                }
-            }
-            if(!found){
-                System.out.println("No Matching ID's");
-            }
-
+            int idNumber = idNumber(scanner);
+            bookIn(idNumber);
         };
+ ;
+    }
+    public static void bookOut(int idNumber, String name){
+        boolean found = false;
+
+        for (int i = 0; numBooks > i; i++) {
+            if (books[i].getId() == idNumber) {
+                books[i].checkOut(name);
+                found = true;
+            }
+        }
+        if(!found){
+            System.out.println("No Matching ID's");
+        }
+    }
+    public static void bookIn(int idNumber){
+        boolean found = false;
+
+        for (int i = 0; numBooks > i; i++) {
+            if (books[i].getId() == idNumber) {
+                books[i].checkIn();
+                found = true;
+                System.out.println("Thank You!");
+            }
+        }
+        if(!found){
+            System.out.println("No Matching ID's");
+        }
+
+    }
+    public static String name(Scanner scanner){
+        System.out.print("Please enter Name: ");
+        return scanner.nextLine();
+    }
+    public static int idNumber(Scanner scanner){
+        System.out.print("Please enter Book ID: ");
+        return scanner.nextInt();
     }
 }
