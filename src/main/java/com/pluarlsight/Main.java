@@ -29,8 +29,12 @@ public class Main {
         books[18] = new Book(19,"9789123456902","The Emberlight Prophecy",false,"");
         books[19] = new Book(20,"9781234567013","The Keeper of Broken Clocks",false,"");
 
+        books[19].checkOut("mason");
+        System.out.println(books[19]);
+        books[19].checkIn();
+        System.out.println(books[19]);
         Scanner scanner = new Scanner(System.in);
-        boolean isDone = false;
+/*        boolean isDone = false;
         while (!isDone){
             System.out.println("Store Home Screen");
             System.out.println("==================");
@@ -42,7 +46,7 @@ public class Main {
                 case 3 -> isDone = true;
                 default -> System.out.println("Invalid Input");
             }
-    }
+    }*/
         //hold a inventory of at least 20 books of my choice
 
         //while loop for Store Home Screen

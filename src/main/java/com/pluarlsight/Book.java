@@ -48,6 +48,19 @@ public class Book {
     }
 
 
+    public void checkOut(String name){
+        this.checkedOutTo = name;
+        this.isCheckedOut = true;
+    }
+    public void checkIn(){
+        this.checkedOutTo = "";
+        this.isCheckedOut = false;
+    }
+    public String toString() {
+        return id + " | " + isbn + " | " + title + " | " + isCheckedOut + " | " + checkedOutTo;
+    }
+
+
     //method checkOut(name) = the books checkedOutTo variable should be set to the name provided
     // and the isCheckedOut varible should be set to true
 
