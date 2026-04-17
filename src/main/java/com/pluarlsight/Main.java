@@ -42,15 +42,13 @@ public class Main {
                         System.out.println(books[i]);
                     }
                 }
-
-
-
-
-
-
-
-
-                case 2 -> System.out.println("");
+                case 2 -> {
+                    for (int i = 0; numBooks > i; i++){
+                        if (books[i].isCheckedOut()) {
+                            System.out.println(books[i]);
+                        }
+                    }
+                }
                 case 3 -> isDone = true;
                 default -> System.out.println("Invalid Input");
             }
