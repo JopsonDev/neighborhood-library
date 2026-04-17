@@ -8,6 +8,8 @@ public class Main {
         private static int numBooks = 20;
 
     static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         books[0] = new Book(1,"9780345678123","The Silent Ember",false,"");
         books[1] = new Book(2,"9781456789234","Echoes of the Hollow Sky",false,"");
         books[2] = new Book(3,"9782567890345","The Clockmaker’s Secret",false,"");
@@ -29,26 +31,17 @@ public class Main {
         books[18] = new Book(19,"9789123456902","The Emberlight Prophecy",false,"");
         books[19] = new Book(20,"9781234567013","The Keeper of Broken Clocks",false,"");
 
-        Scanner scanner = new Scanner(System.in);
         boolean isDone = false;
         while (!isDone){
+
             System.out.println("Store Home Screen");
             System.out.println("=================");
             System.out.print("1). Show Books Available: \n2). Show Checked Out Books\n3). Exit\nInput: ");
             int input = scanner.nextInt();
+
             switch (input){
-                case 1 -> {
-                    for(int i = 0; numBooks > i; i++){
-                        System.out.println(books[i]);
-                    }
-                }
-                case 2 -> {
-                    for (int i = 0; numBooks > i; i++){
-                        if (books[i].isCheckedOut()) {
-                            System.out.println(books[i]);
-                        }
-                    }
-                }
+                case 1 -> availableList();
+                case 2 -> checkOutList();
                 case 3 -> isDone = true;
                 default -> System.out.println("Invalid Input");
             }
@@ -60,6 +53,19 @@ public class Main {
         //1. show avaible books//prompt user to select book to check out or go back//if check out get name
         //2. show checkout out books prompts user to check in book with c or go back with x
 
+    }
+    public static void availableList(){
+        for(int i = 0; numBooks > i; i++){
+            System.out.println(books[i]);
+        }
+    }
+
+    public static void checkOutList(){
+        for (int i = 0; numBooks > i; i++){
+            if (books[i].isCheckedOut()) {
+                System.out.println(books[i]);
+            }
+        }
     }
 
 }
