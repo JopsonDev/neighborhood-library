@@ -53,13 +53,6 @@ public class Main {
                 default -> System.out.println("Invalid Input");
             }
         }
-        //hold a inventory of at least 20 books of my choice
-
-        //while loop for Store Home Screen
-        //store home screen
-        //1. show avaible books//prompt user to select book to check out or go back//if check out get name
-        //2. show checkout out books prompts user to check in book with c or go back with x
-
     }
 
     public static void availableList() {
@@ -68,7 +61,6 @@ public class Main {
         }
 
     }
-
     public static void checkOutList() {
         for (int i = 0; numBooks > i; i++) {
             if (books[i].isCheckedOut()) {
@@ -79,10 +71,11 @@ public class Main {
     public static void checkOutNow(Scanner scanner){
         System.out.print("check out book? C to continue: X to exit to menu: ");
         String checkingOut = scanner.nextLine();
+
         if (checkingOut.equalsIgnoreCase("c")) {
-            System.out.print("Name: ");
+            System.out.print("Please enter Name: ");
             String name = scanner.nextLine();
-            System.out.print("Book ID: ");
+            System.out.print("Please enter Book ID: ");
             int bookChecked = scanner.nextInt();
 
             boolean found = false;
@@ -97,11 +90,12 @@ public class Main {
                 System.out.println("No Matching ID's");
             }
 
-            }
+        }
     }
     public static void checkInNow(Scanner scanner) {
         System.out.println("Want to check in a book? C to continue: X exit to menu");
         String checkIn = scanner.nextLine();
+
         if (checkIn.equalsIgnoreCase("c")) {
             System.out.print("Book ID: ");
             int bookCheckedIn = scanner.nextInt();
