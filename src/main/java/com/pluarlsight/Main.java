@@ -3,7 +3,7 @@ package com.pluarlsight;
 import java.util.Scanner;
 
 public class Main {
-    private static Book[] books = new Book[100];
+    private static Book[] books = new Book[30];
 
     private static int numBooks = 20;
 
@@ -76,7 +76,7 @@ public class Main {
         if (checkingOut.equalsIgnoreCase("c")) {
             String name = name(scanner);
             int idNumber = idNumber(scanner);
-            bookOut(idNumber,name);
+            bookInOut(idNumber,name);
         }
     }
     public static void checkInNow(Scanner scanner) {
@@ -85,24 +85,28 @@ public class Main {
 
         if (checkIn.equalsIgnoreCase("c")) {
             int idNumber = idNumber(scanner);
-            bookIn(idNumber);
-        };
- ;
+            bookInOut(idNumber);
+        }
     }
-    public static void bookOut(int idNumber, String name){
+    public static void bookInOut(int idNumber, String name){
         boolean found = false;
 
         for (int i = 0; numBooks > i; i++) {
             if (books[i].getId() == idNumber) {
-                books[i].checkOut(name);
-                found = true;
+                if (!books[i].getisCheckedOut()) {
+                    books[i].checkOut(name);
+                    found = true;
+                } else {
+                    System.out.println("Book is already checked out.");
+                    found = true;
+                }
             }
         }
         if(!found){
-            System.out.println("No Matching ID's");
+            System.out.println("No matching ID's");
         }
     }
-    public static void bookIn(int idNumber){
+    public static void bookInOut(int idNumber){
         boolean found = false;
 
         for (int i = 0; numBooks > i; i++) {
@@ -123,6 +127,8 @@ public class Main {
     }
     public static int idNumber(Scanner scanner){
         System.out.print("Please enter Book ID: ");
-        return scanner.nextInt();
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        return id;
     }
 }
