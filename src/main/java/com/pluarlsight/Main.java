@@ -1,14 +1,13 @@
 package com.pluarlsight;
 
 import java.util.Scanner;
-//need to make sure checked out books dont show on avaiable
 
 public class Main {
     private static Book[] books = new Book[100];
 
     private static int numBooks = 20;
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         books[0] = new Book(1, "9780345678123", "The Silent Ember", false, "");
@@ -58,13 +57,14 @@ public class Main {
 
     public static void availableList() {
         for (int i = 0; numBooks > i; i++) {
-            System.out.println(books[i]);
+            if (!books[i].getisCheckedOut()) {
+                System.out.println(books[i]);
+            }
         }
-
     }
     public static void checkOutList() {
         for (int i = 0; numBooks > i; i++) {
-            if (books[i].isCheckedOut()) {
+            if (books[i].getisCheckedOut()) {
                 System.out.println(books[i]);
             }
         }

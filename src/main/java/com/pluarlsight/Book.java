@@ -24,7 +24,7 @@ public class Book {
     public String getIsbn() {
         return isbn;
     }
-    public boolean isCheckedOut() {
+    public boolean getisCheckedOut() {
         return isCheckedOut;
     }
     public String getTitle() {
