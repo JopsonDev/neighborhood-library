@@ -53,6 +53,7 @@ public class Main {
                 default -> System.out.println("Invalid Input");
             }
         }
+        scanner.close();
     }
 
     public static void availableList() {
